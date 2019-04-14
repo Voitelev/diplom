@@ -12,24 +12,24 @@ public class Neural {
         DataSet trainingSet =
                 new DataSet(2, 1);
 
-        trainingSet. addRow (new DataSetRow (new double[]{0, 0},
-                new double[]{0}));
-        trainingSet. addRow (new DataSetRow (new double[]{0, 1},
-                new double[]{0}));
-        trainingSet. addRow (new DataSetRow (new double[]{1, 0},
+        trainingSet. addRow (new DataSetRow (new double[]{0.2529677419354838, 0.42444444444444446},
                 new double[]{1}));
-        trainingSet. addRow (new DataSetRow (new double[]{1, 1},
+        trainingSet. addRow (new DataSetRow (new double[]{0.2884672919354838, 0.42435344444444446},
                 new double[]{1}));
+        trainingSet. addRow (new DataSetRow (new double[]{0.3884672919354838, 0.52435344444444446},
+                new double[]{0}));
+        trainingSet. addRow (new DataSetRow (new double[]{0.1884672919354838, 0.22435344444444446},
+                new double[]{0}));
         // learn the training set
         nNetwork.learn(trainingSet);
         // save the trained network into file
         nNetwork.save("or_perceptron.nnet");
-        System.out.println("end");
-
         // set network input
-        nNetwork.setInput(0, 1);
+        nNetwork.setInput(0.426633532934131743, 0.52535344444444446);
         // calculate network
         nNetwork.calculate();
+        Double a[] = nNetwork.getWeights();
+        System.out.println(a.length);
         // get network output
         double[] networkOutput = nNetwork.getOutput();
 
