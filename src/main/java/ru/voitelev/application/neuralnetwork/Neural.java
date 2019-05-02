@@ -20,17 +20,17 @@ public class Neural {
                 new double[]{0}));
         trainingSet. addRow (new DataSetRow (new double[]{0.1884672919354838, 0.22435344444444446},
                 new double[]{0}));
-        // learn the training set
+
         nNetwork.learn(trainingSet);
-        // save the trained network into file
+
         nNetwork.save("or_perceptron.nnet");
-        // set network input
-        nNetwork.setInput(0.426633532934131743, 0.52535344444444446);
-        // calculate network
+
+        nNetwork.setInput(0.526633532934131743, 0.52535344444444446);
+
         nNetwork.calculate();
         Double a[] = nNetwork.getWeights();
         System.out.println(a.length);
-        // get network output
+
         double[] networkOutput = nNetwork.getOutput();
 
         for (double i : networkOutput)

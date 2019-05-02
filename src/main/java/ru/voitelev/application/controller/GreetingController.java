@@ -26,6 +26,11 @@ public class GreetingController {
         return a;
     }
 
+    @RequestMapping(value = "/requestRegistration", method = RequestMethod.GET)
+    @ResponseBody
+    public void registrationUser(@RequestParam String login, String password) throws IOException, GeneralSecurityException {
+        System.out.println(login + " " + password);
+    }
 
     @GetMapping
     public String main(Map<String, Object> model) {

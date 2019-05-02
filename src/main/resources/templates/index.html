@@ -34,9 +34,9 @@
             time = new Date();
         }
         timeUp = new Date();
-        if(timeDown === undefined) {
+        if (timeDown === undefined) {
             timeDown = new Date();
-        } else if(countTab === 2){
+        } else if (countTab === 2) {
             timeBetweenKeys = ((timeUp - timeDown) / 1000);
         } else {
             timeBetweenKeys += ((timeUp - timeDown) / 1000);
@@ -47,28 +47,75 @@
         // console.log(document.getElementById("sped").value);
         // console.log("Ввел букву");
     }
-    function sendAjax(){
+
+    function sendAjax() {
         $.ajax({
             url: "/request",
             type: "get", //send it through get method
             data: {
-                time: printTime , // your get parameter(s)
+                time: printTime, // your get parameter(s)
                 averageTime: b
 
             },
-            success: function(response) {
+            success: function (response) {
                 console.log(response.get());
                 //Do Something on successful Ajax call
             },
-            error: function(xhr) {
+            error: function (xhr) {
                 //Do Something to handle error
             }
         });
-    }</script>
+    }
 
+    function sendRegistration() {
+        let login = document.getElementById("login").value;
+        let password = document.getElementById("password").value;
+        $.ajax({
+            url: "/requestRegistration",
+            type: "get", //send it through get method
+            data: {
+                login: login, // your get parameter(s)
+                password: password
+
+            },
+            success: function (response) {
+                console.log(response.get());
+                //Do Something on successful Ajax call
+            },
+            error: function (xhr) {
+                //Do Something to handle error
+            }
+        });
+    }
+
+    </script>
+    <style>
+        .login-password {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        input {
+            margin: 10px;
+        }
+    </style>
 </head>
 <body>
-<textarea></textarea>
-<input name="sped" id="sped" onchange="stopDimensionSpeed()" oninput="listnerChange()" type="text"> <input onclick="sendAjax()" value="Закончить ввод" type="button">
+<p>Регистрация</p>
+<div class="login-password">
+    <p>Логин</p>
+    <input id="login" name="login">
+    <br>
+    <p>Пароль</p>
+    <input id = "password" name="password">
+    <br>
+    <button onclick="sendRegistration()">Регистрация</button>
+    <textarea name="text-on-writer"></textarea>
+</div>
+
+
+<input name="sped" id="sped" onchange="stopDimensionSpeed()" oninput="listnerChange()" type="text"> <input
+        onclick="sendAjax()" value="Закончить ввод" type="button">
+<button></button>
 </body>
 </html>
